@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -24,5 +25,10 @@ func main() {
 		})
 	})
 
-	r.Run(":8080")
+	// 使用环境变量配置监听地址，默认为 0.0.0.0:8080
+	listenAddr := os.Getenv("LISTEN_ADDR")
+	if listenAddr == "" {
+		listenAddr = "0.0.0.0:8080"
+	}
+	r.Run(listenAddr)
 }
