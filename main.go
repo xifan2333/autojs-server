@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 func main() {
@@ -19,7 +20,7 @@ func main() {
 
 	r.GET("/api/v1/account", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"id":           "6131f76468e4553fba39ae4c",
+			"id":           uuid.New().String(),
 			"now":          time.Now().UnixMilli(),
 			"emailAddress": "Auto@xifan.fun",
 			"fullName":     "AutoJSPro",
