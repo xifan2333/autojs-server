@@ -11,11 +11,12 @@ WORKDIR /app
 ENV GO111MODULE=on
 ENV GOPROXY=https://goproxy.cn,direct
 
-# 复制 go.mod 和 go.sum
+# 复制 go.mod 和 go.sum（如果存在）
 COPY go.mod ./
+COPY go.sum ./
 
 # 下载依赖
-RUN go mod download
+RUN go mod download && go mod verify
 
 # 复制源代码
 COPY . .
